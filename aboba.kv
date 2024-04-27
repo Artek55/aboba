@@ -1,0 +1,85 @@
+MDScreen:
+    screen_man : screen_man
+    MDScreenManager:
+        id: screen_man
+        MDScreen:
+            name: "screen1"
+            minimum_size: (600, 400)
+
+            MDFloatLayout:
+                orientation: 'vertical'
+
+                MDLabel:
+                    text: "ВХОД"
+                    halign: 'center'
+                    size_hint_x: .3
+                    pos_hint: {"center_x": 0.5, "center_y": 0.8}
+                MDTextField:
+                    hint_text: "Введите логин"
+                    size_hint: .9, .1
+                    mode: "rectangle"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.6}
+                MDTextField:
+                    id: password
+                    hint_text: "Введите пароль"
+                    size_hint: .9, .1
+                    mode: "rectangle"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                MDRaisedButton:
+                    text: "зарегистрироваться"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                    on_release: app.registration()
+
+                MDRaisedButton:
+                    text: "войти"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.2}
+                    md_bg_color: "orange"
+                    on_release: app.sin_login()
+
+        MDScreen:
+            name: "screen2"
+            id: f2
+            MDFloatLayout:
+                orientation: 'vertical'
+
+            MDLabel:
+                text: "Список"
+                halign: 'center'
+                size_hint_x: .3
+                pos_hint: {"center_x": 0.5, "center_y": 0.9}
+
+        MDScreen:
+            name: "screen3"
+            id: f3
+            MDFloatLayout:
+                orientation: 'vertical'
+
+                MDLabel:
+                    text: "РЕГИСТРАЦИЯ"
+                    halign: 'center'
+                    size_hint_x: .3
+                    pos_hint: {"center_x": 0.5, "center_y": 0.8}
+                MDTextField:
+                    hint_text: "Введите логин"
+                    size_hint: .9, .1
+                    mode: "rectangle"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.6}
+                MDTextField:
+                    id: password
+                    hint_text: "Введите пароль"
+                    size_hint: .9, .1
+                    mode: "rectangle"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                MDTextField:
+                    id: password
+                    hint_text: "Введите электронную почту"
+                    size_hint: .9, .1
+                    mode: "rectangle"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.4}
+
+                MDRaisedButton:
+                    text: "зарегистрироваться"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                    on_release: app.rega("c")
