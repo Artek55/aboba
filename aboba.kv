@@ -1,85 +1,242 @@
+
+
+<DrawerClickableItem@MDNavigationDrawerItem>
+    focus_color: "#e7e4c0"
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    ripple_color: "#c5bdd2"
+    selected_color: "#0c6c4d"
+
+
+<DrawerLabelItem@MDNavigationDrawerItem>
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    focus_behavior: False
+    selected_color: "#4a4939"
+    _no_ripple_effect: True
+
+
+
+
+<ContentNavigationDrawer>:
+    orientation: "vertical"
+    padding: "8dp"
+    spacing: "8dp"
+
+
+    MDNavigationDrawerMenu:
+
+        MDNavigationDrawerHeader:
+
+            title: "Мой профиль"
+            title_color: "#4a4939"
+            spacing: "4dp"
+            padding: "8dp", 0, 0, "80dp"
+
+        DrawerClickableItem:
+            icon: "gmail"
+            text_right_color: "#4a4939"
+            text: "оформить заказ"
+
+
+        DrawerClickableItem:
+            icon: "send"
+            text: "предыдущие заказы"
+
+        MDNavigationDrawerDivider:
+
+        MDNavigationDrawerLabel:
+            text: "Labels"
+
+        DrawerLabelItem:
+            icon: "information-outline"
+            text: "Label"
+
+        DrawerLabelItem:
+            icon: "information-outline"
+            text: "Label"
+
+
+
+#    AnchorLayout:
+#        anchor_x: "left"
+#        size_hint_y: None
+#
+#
+
+#    MDNavigationDrawerHeader:
+#        title: "Меню"
+#        title_color: "#4a4939"
+#        orientation: "vertical"
+#        pos_hint: {"center_x": 0.9, "center_y": 0.95}
+#        MDRaisedButton:
+#            text: "оформить заказ"
+#            pos_hint: {"center_x": 0.9, "center_y": 0.6}
+#            size_hint: .5, .0
+#            on_release: app.order1()
+
+
+
+
+
+
+#    ScrollView:
+#
+#        MDList:
+#            id: md_list
+#            MDRaisedButton:
+#                text: "Букеты"
+#                pos_hint: {"center_x": 0.9, "center_y": 0.6}
+#                size_hint: .9, .1
+#            MDRaisedButton:
+#                text: "Наборы"
+#                pos_hint: {"center_x": 0.6, "center_y": 0.3}
+#                size_hint: .9, .1
+#            MDRaisedButton:
+#                text: "Корзины"
+#                pos_hint: {"center_x": 0.3, "center_y": 0.2}
+#                size_hint: .9, .1
+
 MDScreen:
     screen_man : screen_man
-    MDScreenManager:
-        id: screen_man
-        MDScreen:
-            name: "screen1"
-            minimum_size: (600, 400)
+    nav_drawer: nav_drawer
+    MDNavigationLayout:
+        MDScreenManager:
+            id: screen_man
+            MDScreen:
+                name: "screen1"
+                minimum_size: (600, 400)
 
-            MDFloatLayout:
-                orientation: 'vertical'
+                MDFloatLayout:
+                    orientation: 'vertical'
+
+                    MDLabel:
+                        text: "ВХОД"
+                        halign: 'center'
+                        size_hint_x: .3
+                        pos_hint: {"center_x": 0.5, "center_y": 0.8}
+                    MDTextField:
+                        hint_text: "Введите логин"
+                        size_hint: .9, .1
+                        mode: "rectangle"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.6}
+                    MDTextField:
+                        id: password
+                        hint_text: "Введите пароль"
+                        size_hint: .9, .1
+                        mode: "rectangle"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                    MDRaisedButton:
+                        text: "зарегистрироваться"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                        on_release: app.registration()
+
+                    MDRaisedButton:
+                        text: "войти"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+                        on_release: app.sin_login()
+
+            MDScreen:
+                name: "screen2"
+                id: f2
+                MDFloatLayout:
+                    orientation: 'vertical'
 
                 MDLabel:
-                    text: "ВХОД"
+                    text: "Список"
                     halign: 'center'
                     size_hint_x: .3
-                    pos_hint: {"center_x": 0.5, "center_y": 0.8}
-                MDTextField:
-                    hint_text: "Введите логин"
-                    size_hint: .9, .1
-                    mode: "rectangle"
-                    pos_hint: {"center_x": 0.5, "center_y": 0.6}
-                MDTextField:
-                    id: password
-                    hint_text: "Введите пароль"
-                    size_hint: .9, .1
-                    mode: "rectangle"
-                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
-
+                    pos_hint: {"center_x": 0.5, "center_y": 0.9}
                 MDRaisedButton:
-                    text: "зарегистрироваться"
-                    pos_hint: {"center_x": 0.5, "center_y": 0.3}
-                    on_release: app.registration()
-
-                MDRaisedButton:
-                    text: "войти"
+                    text: "навигация"
                     pos_hint: {"center_x": 0.5, "center_y": 0.2}
-                    md_bg_color: "orange"
-                    on_release: app.sin_login()
+                    on_release: nav_drawer.set_state("open")
 
-        MDScreen:
-            name: "screen2"
-            id: f2
-            MDFloatLayout:
-                orientation: 'vertical'
+                MDRaisedButton:
+                    text: "выйти из аккаунта"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.1}
+                    on_release: app.back('screen1')
 
-            MDLabel:
-                text: "Список"
-                halign: 'center'
-                size_hint_x: .3
-                pos_hint: {"center_x": 0.5, "center_y": 0.9}
 
-        MDScreen:
-            name: "screen3"
-            id: f3
-            MDFloatLayout:
-                orientation: 'vertical'
+            MDScreen:
+                name: "screen3"
+                id: f3
+                MDFloatLayout:
+                    orientation: 'vertical'
 
+                    MDLabel:
+                        text: "РЕГИСТРАЦИЯ"
+                        halign: 'center'
+                        size_hint_x: .3
+                        pos_hint: {"center_x": 0.5, "center_y": 0.8}
+                    MDTextField:
+                        hint_text: "Введите логин"
+                        size_hint: .9, .1
+                        mode: "rectangle"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.6}
+                    MDTextField:
+                        id: password
+                        hint_text: "Введите пароль"
+                        size_hint: .9, .1
+                        mode: "rectangle"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                    MDTextField:
+                        id: password
+                        hint_text: "Введите электронную почту"
+                        size_hint: .9, .1
+                        mode: "rectangle"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.4}
+
+                    MDRaisedButton:
+                        text: "зарегистрироваться"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                        on_release: app.rega()
+
+                    MDRaisedButton:
+                        text: "назад"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+                        on_release: app.back("screen1")
+
+            MDScreen:
+                name: "screen4"
+                id: f4
+                MDFloatLayout:
+                    orientation: 'vertical'
+                    MDLabel:
+                        text: "Выберете товар для заказа"
+                        halign: 'center'
+                        size_hint_y: .3
+                        pos_hint: {"center_x": 0.5, "center_y": 0.8}
+
+                    MDRaisedButton:
+                        text: "букеты"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+
+                    MDRaisedButton:
+                        text: "наборы"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+
+
+
+
+
+            MDScreen:
+                name: "screen5"
+                id: f5
+                MDFloatLayout:
+                    orientation: 'vertical'
                 MDLabel:
-                    text: "РЕГИСТРАЦИЯ"
+                    text: "gjdfjfhj"
                     halign: 'center'
                     size_hint_x: .3
                     pos_hint: {"center_x": 0.5, "center_y": 0.8}
-                MDTextField:
-                    hint_text: "Введите логин"
-                    size_hint: .9, .1
-                    mode: "rectangle"
-                    pos_hint: {"center_x": 0.5, "center_y": 0.6}
-                MDTextField:
-                    id: password
-                    hint_text: "Введите пароль"
-                    size_hint: .9, .1
-                    mode: "rectangle"
-                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
-                MDTextField:
-                    id: password
-                    hint_text: "Введите электронную почту"
-                    size_hint: .9, .1
-                    mode: "rectangle"
-                    pos_hint: {"center_x": 0.5, "center_y": 0.4}
 
-                MDRaisedButton:
-                    text: "зарегистрироваться"
-                    pos_hint: {"center_x": 0.5, "center_y": 0.3}
-                    on_release: app.rega("c")
+        MDNavigationDrawer:
+            id: nav_drawer
+            anchor: "left"
+            ContentNavigationDrawer:
+                screen_manager: screen_man
+                nav_drawer: nav_drawer
