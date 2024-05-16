@@ -37,11 +37,12 @@
             icon: "gmail"
             text_right_color: "#4a4939"
             text: "оформить заказ"
-
+            on_release: app.order1()
 
         DrawerClickableItem:
             icon: "send"
             text: "предыдущие заказы"
+            on_release: app.order2()
 
         MDNavigationDrawerDivider:
 
@@ -57,46 +58,6 @@
             text: "Label"
 
 
-
-#    AnchorLayout:
-#        anchor_x: "left"
-#        size_hint_y: None
-#
-#
-
-#    MDNavigationDrawerHeader:
-#        title: "Меню"
-#        title_color: "#4a4939"
-#        orientation: "vertical"
-#        pos_hint: {"center_x": 0.9, "center_y": 0.95}
-#        MDRaisedButton:
-#            text: "оформить заказ"
-#            pos_hint: {"center_x": 0.9, "center_y": 0.6}
-#            size_hint: .5, .0
-#            on_release: app.order1()
-
-
-
-
-
-
-#    ScrollView:
-#
-#        MDList:
-#            id: md_list
-#            MDRaisedButton:
-#                text: "Букеты"
-#                pos_hint: {"center_x": 0.9, "center_y": 0.6}
-#                size_hint: .9, .1
-#            MDRaisedButton:
-#                text: "Наборы"
-#                pos_hint: {"center_x": 0.6, "center_y": 0.3}
-#                size_hint: .9, .1
-#            MDRaisedButton:
-#                text: "Корзины"
-#                pos_hint: {"center_x": 0.3, "center_y": 0.2}
-#                size_hint: .9, .1
-
 MDScreen:
     screen_man : screen_man
     nav_drawer: nav_drawer
@@ -105,7 +66,7 @@ MDScreen:
             id: screen_man
             MDScreen:
                 name: "screen1"
-                minimum_size: (600, 400)
+                minimum_size: (600, 500)
 
                 MDFloatLayout:
                     orientation: 'vertical'
@@ -140,23 +101,165 @@ MDScreen:
             MDScreen:
                 name: "screen2"
                 id: f2
-                MDFloatLayout:
+                MDBoxLayout:
                     orientation: 'vertical'
 
-                MDLabel:
-                    text: "Список"
-                    halign: 'center'
-                    size_hint_x: .3
-                    pos_hint: {"center_x": 0.5, "center_y": 0.9}
-                MDRaisedButton:
-                    text: "навигация"
-                    pos_hint: {"center_x": 0.5, "center_y": 0.2}
-                    on_release: nav_drawer.set_state("open")
+                    MDBottomNavigation:
+                        #panel_color: "#eeeaea"
+                        selected_color_background: "orange"
+                        text_color_active: "lightgrey"
 
-                MDRaisedButton:
-                    text: "выйти из аккаунта"
-                    pos_hint: {"center_x": 0.5, "center_y": 0.1}
-                    on_release: app.back('screen1')
+                        MDBottomNavigationItem:
+                            name: 'screen 1'
+                            text: 'Mail'
+                            icon: 'gmail'
+                            badge_icon: "numeric-10"
+                            #on_release: nav_drawer.set_state("open")
+
+
+                            MDScrollView:
+                                size_hint: 0.9, 0.9
+
+                                MDGridLayout:
+                                    id:box
+                                    size_hint_y:None
+                                    height: self.minimum_height
+                                    spacing:10
+                                    padding:50
+                                    cols:2
+
+
+
+                                    MDSmartTile:
+                                        radius: 24
+                                        box_radius: [0, 0, 24, 24]
+                                        lines: 2
+                                        source: "f1.jpg"
+                                        pos_hint: {"center_x": .5, "center_y": .5}
+                                        size_hint: None, None
+                                        size: "200dp", "200dp"
+
+                                        MDIconButton:
+                                            icon: "heart-outline"
+                                            theme_icon_color: "Custom"
+                                            icon_color: 1, 0, 0, 1
+                                            pos_hint: {"center_y": .5}
+                                            on_release: self.icon = "heart" if self.icon == "heart-outline" else "heart-outline"
+
+                                        TwoLineListItem:
+                                            text: "[color=#ffffff][b]Букет[/b][/color]"
+                                            #secondary_text: "[color=#808080][b][/b][/color]"
+                                            pos_hint: {"center_y": .5}
+                                            _no_ripple_effect: True
+
+                                    MDSmartTile:
+                                        radius: 24
+                                        box_radius: [0, 0, 24, 24]
+                                        lines: 2
+                                        source: "f2.jpg"
+                                        pos_hint: {"center_x": .5, "center_y": .5}
+                                        size_hint: None, None
+                                        size: "200dp", "200dp"
+                                        MDIconButton:
+                                            icon: "heart-outline"
+                                            theme_icon_color: "Custom"
+                                            icon_color: 1, 0, 0, 1
+                                            pos_hint: {"center_y": .5}
+                                            on_release: self.icon = "heart" if self.icon == "heart-outline" else "heart-outline"
+
+                                        TwoLineListItem:
+                                            text: "[color=#ffffff][b]Набор [/b][/color]"
+                                            #secondary_text: "[color=#808080][b]Julia and Julie[/b][/color]"
+                                            pos_hint: {"center_y": .5}
+                                            _no_ripple_effect: True
+
+
+                                    MDSmartTile:
+                                        radius: 24
+                                        box_radius: [0, 0, 24, 24]
+                                        lines: 2
+                                        source: "f3.jpg"
+                                        pos_hint: {"center_x": .5, "center_y": .5}
+                                        size_hint: None, None
+                                        size: "200dp", "200dp"
+                                        MDIconButton:
+                                            icon: "heart-outline"
+                                            theme_icon_color: "Custom"
+                                            icon_color: 1, 0, 0, 1
+                                            pos_hint: {"center_y": .5}
+                                            on_release: self.icon = "heart" if self.icon == "heart-outline" else "heart-outline"
+                                        TwoLineListItem:
+                                            text: "[color=#ffffff][b]Букет[/b][/color]"
+                                            #secondary_text: "[color=#808080][b]Julia and Julie[/b][/color]"
+                                            pos_hint: {"center_y": .5}
+                                            _no_ripple_effect: True
+                        MDBottomNavigationItem:
+                            name: 'screen 2'
+                            text: 'Twitter'
+                            icon: 'twitter'
+                            badge_icon: "numeric-5"
+                            #on_release: nav_drawer.set_state("open")
+
+
+                            MDLabel:
+                                text: 'Twitter'
+                                halign: 'center'
+
+                        MDBottomNavigationItem:
+                            name: 'screen 3'
+                            text: 'LinkedIN'
+                            icon: 'linkedin'
+                            #on_release: app.back('screen1')
+
+                            MDLabel:
+                                text: 'LinkedIN'
+                                halign: 'center'
+
+
+                    MDFloatLayout:
+                        size_hint: 0.9, 0.25
+
+    #                MDLabel:
+    #                    text: "Список"
+    #                    halign: 'center'
+    #                    size_hint_x: .3
+    #                    pos_hint: {"center_x": 0.5, "center_y": 0.9}
+#                    MDRaisedButton:
+#                        text: "навигация"
+#                        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+#                        on_release: nav_drawer.set_state("open")
+#
+#                    MDRaisedButton:
+#                        text: "выйти из аккаунта"
+#                        pos_hint: {"center_x": 0.5, "center_y": 0.1}
+#                        on_release: app.back('screen1')
+
+
+
+
+#                MDCard:
+#                    radius: 36
+#                    md_bg_color: "grey"
+#                    pos_hint: {"center_x": .6, "center_y": .89}
+#                    size_hint: .3, .2
+#
+#                    FitImage:
+#                        source: "f3.jpg"
+#                        size_hint_y: .8
+#                        pos_hint: {"top": 1}
+#                        radius: 36, 36, 0, 0
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             MDScreen:

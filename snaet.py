@@ -11,7 +11,7 @@ from kivy.properties import ObjectProperty
 from kivymd.uix.datatables import MDDataTable
 
 
-Window.size = (520, 900)
+Window.size = (520, 800)
 
 
 
@@ -41,6 +41,8 @@ class MainApp(MDApp):
         self.root.nav_drawer.set_state("close")
     def order1(self):
         self.root.ids.screen_man.current = "screen4"
+
+
 
     def order2(self):
         self.root.ids.screen_man.current = "screen5"
