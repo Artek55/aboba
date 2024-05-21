@@ -44,18 +44,7 @@
             text: "предыдущие заказы"
             on_release: app.order2()
 
-        MDNavigationDrawerDivider:
 
-        MDNavigationDrawerLabel:
-            text: "Labels"
-
-        DrawerLabelItem:
-            icon: "information-outline"
-            text: "Label"
-
-        DrawerLabelItem:
-            icon: "information-outline"
-            text: "Label"
 
 
 MDScreen:
@@ -104,7 +93,100 @@ MDScreen:
                 MDBoxLayout:
                     orientation: 'vertical'
 
+                    MDFloatingActionButton:
+                        icon: "menu"
+                        md_bg_color: app.theme_cls.primary_color
+                        pos_hint: {"center_x": .1, "center_y": .1}
+                        size_hint: None, None
+                        size: "200dp", "200dp"
+                        on_release: nav_drawer.set_state("open")
+
+
+
+
+
+
+
+                    MDScrollView:
+                        size_hint: 0.9, 0.9
+
+                        MDGridLayout:
+                            id:box
+                            size_hint_y:None
+                            height: self.minimum_height
+                            spacing:10
+                            padding:50
+                            cols:2
+
+
+
+                            MDSmartTile:
+                                radius: 24
+                                box_radius: [0, 0, 24, 24]
+                                lines: 2
+                                source: "f1.jpg"
+                                pos_hint: {"center_x": .5, "center_y": .5}
+                                size_hint: None, None
+                                size: "200dp", "200dp"
+
+                                MDIconButton:
+                                    icon: "heart-outline"
+                                    theme_icon_color: "Custom"
+                                    icon_color: 1, 0, 0, 1
+                                    pos_hint: {"center_y": .5}
+                                    on_release: self.icon = "heart" if self.icon == "heart-outline" else "heart-outline"
+
+                                TwoLineListItem:
+                                    text: "[color=#ffffff][b]Букет[/b][/color]"
+                                    #secondary_text: "[color=#808080][b][/b][/color]"
+                                    pos_hint: {"center_y": .5}
+                                    _no_ripple_effect: True
+
+                            MDSmartTile:
+                                radius: 24
+                                box_radius: [0, 0, 24, 24]
+                                lines: 2
+                                source: "f2.jpg"
+                                pos_hint: {"center_x": .5, "center_y": .5}
+                                size_hint: None, None
+                                size: "200dp", "200dp"
+                                MDIconButton:
+                                    icon: "heart-outline"
+                                    theme_icon_color: "Custom"
+                                    icon_color: 1, 0, 0, 1
+                                    pos_hint: {"center_y": .5}
+                                    on_release: self.icon = "heart" if self.icon == "heart-outline" else "heart-outline"
+
+                                TwoLineListItem:
+                                    text: "[color=#ffffff][b]Набор [/b][/color]"
+                                    #secondary_text: "[color=#808080][b]Julia and Julie[/b][/color]"
+                                    pos_hint: {"center_y": .5}
+                                    _no_ripple_effect: True
+
+
+                            MDSmartTile:
+                                radius: 24
+                                box_radius: [0, 0, 24, 24]
+                                lines: 2
+                                source: "f3.jpg"
+                                pos_hint: {"center_x": .5, "center_y": .5}
+                                size_hint: None, None
+                                size: "200dp", "200dp"
+                                MDIconButton:
+                                    icon: "heart-outline"
+                                    theme_icon_color: "Custom"
+                                    icon_color: 1, 0, 0, 1
+                                    pos_hint: {"center_y": .5}
+                                    on_release: self.icon = "heart" if self.icon == "heart-outline" else "heart-outline"
+                                TwoLineListItem:
+                                    text: "[color=#ffffff][b]Букет[/b][/color]"
+                                    #secondary_text: "[color=#808080][b]Julia and Julie[/b][/color]"
+                                    pos_hint: {"center_y": .5}
+                                    _no_ripple_effect: True
+
+
                     MDBottomNavigation:
+                        size_hint: 1, .2
                         #panel_color: "#eeeaea"
                         selected_color_background: "orange"
                         text_color_active: "lightgrey"
@@ -112,87 +194,11 @@ MDScreen:
                         MDBottomNavigationItem:
                             name: 'screen 1'
                             text: 'Mail'
-                            icon: 'gmail'
+                            icon: 'format-float-right'
                             badge_icon: "numeric-10"
                             #on_release: nav_drawer.set_state("open")
 
 
-                            MDScrollView:
-                                size_hint: 0.9, 0.9
-
-                                MDGridLayout:
-                                    id:box
-                                    size_hint_y:None
-                                    height: self.minimum_height
-                                    spacing:10
-                                    padding:50
-                                    cols:2
-
-
-
-                                    MDSmartTile:
-                                        radius: 24
-                                        box_radius: [0, 0, 24, 24]
-                                        lines: 2
-                                        source: "f1.jpg"
-                                        pos_hint: {"center_x": .5, "center_y": .5}
-                                        size_hint: None, None
-                                        size: "200dp", "200dp"
-
-                                        MDIconButton:
-                                            icon: "heart-outline"
-                                            theme_icon_color: "Custom"
-                                            icon_color: 1, 0, 0, 1
-                                            pos_hint: {"center_y": .5}
-                                            on_release: self.icon = "heart" if self.icon == "heart-outline" else "heart-outline"
-
-                                        TwoLineListItem:
-                                            text: "[color=#ffffff][b]Букет[/b][/color]"
-                                            #secondary_text: "[color=#808080][b][/b][/color]"
-                                            pos_hint: {"center_y": .5}
-                                            _no_ripple_effect: True
-
-                                    MDSmartTile:
-                                        radius: 24
-                                        box_radius: [0, 0, 24, 24]
-                                        lines: 2
-                                        source: "f2.jpg"
-                                        pos_hint: {"center_x": .5, "center_y": .5}
-                                        size_hint: None, None
-                                        size: "200dp", "200dp"
-                                        MDIconButton:
-                                            icon: "heart-outline"
-                                            theme_icon_color: "Custom"
-                                            icon_color: 1, 0, 0, 1
-                                            pos_hint: {"center_y": .5}
-                                            on_release: self.icon = "heart" if self.icon == "heart-outline" else "heart-outline"
-
-                                        TwoLineListItem:
-                                            text: "[color=#ffffff][b]Набор [/b][/color]"
-                                            #secondary_text: "[color=#808080][b]Julia and Julie[/b][/color]"
-                                            pos_hint: {"center_y": .5}
-                                            _no_ripple_effect: True
-
-
-                                    MDSmartTile:
-                                        radius: 24
-                                        box_radius: [0, 0, 24, 24]
-                                        lines: 2
-                                        source: "f3.jpg"
-                                        pos_hint: {"center_x": .5, "center_y": .5}
-                                        size_hint: None, None
-                                        size: "200dp", "200dp"
-                                        MDIconButton:
-                                            icon: "heart-outline"
-                                            theme_icon_color: "Custom"
-                                            icon_color: 1, 0, 0, 1
-                                            pos_hint: {"center_y": .5}
-                                            on_release: self.icon = "heart" if self.icon == "heart-outline" else "heart-outline"
-                                        TwoLineListItem:
-                                            text: "[color=#ffffff][b]Букет[/b][/color]"
-                                            #secondary_text: "[color=#808080][b]Julia and Julie[/b][/color]"
-                                            pos_hint: {"center_y": .5}
-                                            _no_ripple_effect: True
                         MDBottomNavigationItem:
                             name: 'screen 2'
                             text: 'Twitter'
@@ -216,8 +222,7 @@ MDScreen:
                                 halign: 'center'
 
 
-                    MDFloatLayout:
-                        size_hint: 0.9, 0.25
+
 
     #                MDLabel:
     #                    text: "Список"
