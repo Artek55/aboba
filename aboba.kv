@@ -301,12 +301,22 @@ MDScreen:
                 MDFloatLayout:
                     orientation: 'vertical'
                     MDLabel:
-                        text: "Выберете товар для заказа"
+                        text: "Заполните форму ниже или свяжитесь\n с мастером напрямую через Telegram,\n написав на номер +7 960 308 41 40 "
                         halign: 'center'
                         size_hint_y: .3
                         pos_hint: {"center_x": 0.5, "center_y": 0.8}
 
 
+                    MDCard:
+                        radius: 36
+                        pos_hint: {"center_x": .5, "center_y": .5}
+                        size_hint: None, None
+                        size: "200dp", "200dp"
+                        FitImage:
+                            source: "f111.jpg"
+                            size: "200dp", "200dp"
+                            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                            radius: 36, 36, 36, 36
 
 
 
@@ -385,6 +395,28 @@ MDScreen:
                 id: f6
                 MDFloatLayout:
                     orientation: 'vertical'
+
+                    MDTextField:
+                        id: password
+                        hint_text: "Введите тематику  "
+                        size_hint: .9, .1
+                        mode: "rectangle"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.9}
+
+                    MDTextField:
+                        id: password
+                        hint_text: "Введите цвет упаковки"
+                        size_hint: .9, .1
+                        mode: "rectangle"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.8}
+
+                    MDTextField:
+                        id: password
+                        hint_text: "Введите дополнительные ингредиенты"
+                        size_hint: .9, .1
+                        mode: "rectangle"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.7}
+
                 MDFloatingActionButton:
                     icon: "logout"
                     md_bg_color: app.theme_cls.primary_color
@@ -392,7 +424,6 @@ MDScreen:
                     size_hint: None, None
                     size: "200dp", "200dp"
                     on_release: app.back("screen4")
-
 
 
 

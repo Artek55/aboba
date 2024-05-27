@@ -10,8 +10,8 @@ from kivymd.app import MDApp
 from kivymd.uix.menu import MDDropdownMenu
 from kivy.properties import ObjectProperty
 from kivymd.uix.datatables import MDDataTable
-
-
+from kivymd.uix.card import MDCard
+from kivy.properties import StringProperty
 Window.size = (520, 800)
 
 
